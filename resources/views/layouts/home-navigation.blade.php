@@ -25,8 +25,18 @@
                 <div class="col-lg-6 col-md-5 col-12 col-sm-4">
                     <div class="login-register">
                         <ul>
-                            <li><a href="login-register.html">Login</a></li>
-                            <li><a href="login-register.html">Register</a></li>
+                            @if (Route::has('login'))
+
+                                @auth
+                                    <li> <a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                                @else
+                                    <li><a href="{{ route('login') }}">Login</a></li>
+
+                                    @if (Route::has('register'))
+                                        <li><a href="{{ route('register') }}">Register</a></li>
+                                    @endif
+                                @endauth
+                            @endif
                         </ul>
                     </div>
                 </div>

@@ -2,7 +2,13 @@
     <div class="register-box">
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+                <a href="../../index2.html" class="h1">
+                    @if (!empty($information->logo))
+                        <img src="{{ asset("storage/$information->logo") }}" alt="">
+                    @else
+                        <b>Admin</b>LTE
+                    @endif
+                </a>
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Register a new membership</p>

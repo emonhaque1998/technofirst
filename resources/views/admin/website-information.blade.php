@@ -60,7 +60,7 @@
                             </div>
                             <div class="flex justify-center items-start flex-col mb-5">
                                 <div id="brand_logo_src"
-                                    @if (!empty($basicInfo->logo)) class="w-40 h-40 bg-[url('{{ asset("storage/$basicInfo->logo") }}')] bg-cover bg-center">
+                                    @if (!empty($basicInfo->logo)) style="background: url({{ asset("storage/$basicInfo->logo") }}); background-repeat: no-repeat;  object-fit: cover" class="w-40 h-40 bg-cover bg-center">
                                 @else
                                     class="w-40 h-40 bg-[url('https://placekitten.com/1400')] bg-cover bg-center"> @endif
                                     <div id="band_logo"
@@ -80,7 +80,7 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary bg-primary">Submit</button>
                 </div>
                 </form>
             </div>

@@ -203,7 +203,7 @@
                             <a href="{{ route('website-information.index') }}"
                                 class="nav-link {{ request()->routeIs('website-information.index') ? 'active' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Website Information</p>
+                                <p>Information</p>
                             </a>
                         </li>
                     </ul>
