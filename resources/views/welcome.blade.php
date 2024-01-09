@@ -1,4 +1,4 @@
-<x-home-layout :passingData="$data">
+<x-home-layout>
     <div class="slider-area">
     <div class="slider-active owl-carousel">
         <div class="single-slider slider-height-1 bg-img" style="background-image:url(assets/img/slider/slider-1.jpg);">

@@ -6,15 +6,15 @@
                     <div class="header-contact">
                         <ul>
                             <li><i class="fa fa-phone"></i> +88
-                                @if (!empty($passingData->phone))
-                                    {{ $passingData->phone }}
+                                @if (!empty($information->phone))
+                                    {{ $information->phone }}
                                 @else
                                     01XXXXXXXXX
                                 @endif
                             </li>
                             <li><i class="fa fa-envelope-o"></i><a href="#">
-                                    @if (!empty($passingData->email))
-                                        {{ $passingData->email }}
+                                    @if (!empty($information->email))
+                                        {{ $information->email }}
                                     @else
                                         test@email.com
                                     @endif
@@ -49,9 +49,9 @@
             <div class="row">
                 <div class="col-lg-2 col-md-6 col-4">
                     <div class="logo">
-                        @if (!empty($passingData->logo))
+                        @if (!empty($information->logo))
                             <a href="{{ route('home') }}">
-                                <img alt="" src="{{ asset("storage/$passingData->logo") }}">
+                                <img alt="" src="{{ asset("storage/$information->logo") }}">
                             </a>
                         @endif
                     </div>
@@ -69,67 +69,6 @@
                                     <li><a href="{{ route('contact.page') }}"> CONTACT </a></li>
                                 </ul>
                             </nav>
-                        </div>
-                        <div class="cart-search-wrap">
-                            <div class="cart-wrap">
-                                <button class="icon-cart">
-                                    <i class="fa fa-cart-plus"></i>
-                                    <span class="count-style">02</span>
-                                </button>
-                                <div class="shopping-cart-content">
-                                    <ul>
-                                        <li class="single-shopping-cart">
-                                            <div class="shopping-cart-img">
-                                                <a href="#"><img alt=""
-                                                        src="assets/img/cart/cart-1.png"></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="#">Color Box </a></h4>
-                                                <h6>Qty: 02</h6>
-                                                <span>$260.00</span>
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                <a href="#"><i class="fa fa-times-circle"></i></a>
-                                            </div>
-                                        </li>
-                                        <li class="single-shopping-cart">
-                                            <div class="shopping-cart-img">
-                                                <a href="#"><img alt=""
-                                                        src="assets/img/cart/cart-2.png"></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="#">Color Box </a></h4>
-                                                <h6>Qty: 02</h6>
-                                                <span>$260.00</span>
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                <a href="#"><i class="fa fa-times-circle"></i></a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="shopping-cart-total">
-                                        <h4>Shipping : <span>$20.00</span></h4>
-                                        <h4>Total : <span class="shop-total">$260.00</span></h4>
-                                    </div>
-                                    <div class="shopping-cart-btn">
-                                        <a class="default-btn btn-hover" href="cart.html">view cart</a>
-                                        <a class="default-btn btn-hover" href="checkout.html">checkout</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="header-search">
-                                <button class="search-toggle">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                                <div class="search-content">
-                                    <form action="#">
-                                        <input type="text" placeholder="Search">
-                                        <button>
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

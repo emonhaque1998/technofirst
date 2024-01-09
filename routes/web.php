@@ -21,8 +21,7 @@ use App\Http\Controllers\Admin\WebsiteInformationController;
 
 // Frontend Route
 Route::get('/', function () {
-    $data = WebsiteInformation::latest()->first();
-    return view('welcome')->with("data", $data );
+    return view('welcome');
 })->name("home");
 
 Route::resource('/about-us', AboutController::class)->names([

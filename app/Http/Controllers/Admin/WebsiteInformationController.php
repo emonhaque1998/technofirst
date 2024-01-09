@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\WebsiteInformation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use Carbon\Carbon;
 
 
 class WebsiteInformationController extends Controller
@@ -14,7 +16,9 @@ class WebsiteInformationController extends Controller
      */
     public function index()
     {
-        $data = WebsiteInformation::latest()->first();
+        $data = Cache::remember('ws_information', Carbon::now()->addDay(), function () {
+            return WebsiteInformation::latest()->first();;
+        });
         return view("admin.website-information")->with("basicInfo", $data);
     }
 
@@ -55,6 +59,7 @@ class WebsiteInformationController extends Controller
                 'logo' => $path
             ]);
         }
+        Cache::forget("ws_information");
         return response()->json([
             "message" => "You are success update site",
             "success" => true
