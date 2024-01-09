@@ -28,7 +28,7 @@
 </head>
 
 <body>
-    @include('layouts.home-navigation', ['passingData' => $passingData])
+    @include('layouts.home-navigation', ['information' => $information])
 
     <div class="main-content">
         {{ $slot }}
