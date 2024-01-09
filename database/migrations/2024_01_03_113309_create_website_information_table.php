@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string("phone")->nullable();
             $table->string("logo")->nullable();
             $table->string("address")->nullable();
+            $table->string("about_us")->nullable();
+            $table->string("copyright")->nullable();
+            $table->string("footer_background")->nullable();
             $table->timestamps();
         });
     }

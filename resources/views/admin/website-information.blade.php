@@ -96,8 +96,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="{{ route('website-information.store') }}" method="POST" enctype="multipart/form-data"
-                        id="brand_logo_form">
+                    <form action="" method="POST" enctype="multipart/form-data" id="footer_information_form">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
@@ -105,17 +104,40 @@
                                 <input type="text" class="form-control" name="address"
                                     value='@if (!empty($basicInfo->phone)) {{ $basicInfo->phone }} @endif'
                                     id="footerAddress" placeholder="Enter Company Address">
-                                <x-input-error :messages="$errors->get('mobile')" class="mt-2" />
                             </div>
+                            <div class="form-group">
+                                <label for="footerAbout">About Us</label>
+                                <br>
+                                <textarea name="about_us_short" class="w-full" id="summernote">Input your About</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="footerCopyright">Copyright</label>
+                                <input type="text" class="form-control" name="copyright"
+                                    value='@if (!empty($basicInfo->phone)) {{ $basicInfo->phone }} @endif'
+                                    id="footerCopyright" placeholder="Enter Copyright Texts">
+                            </div>
+
+
+
+                            <!-- <label for="customFile">Custom File</label> -->
+                            <div class="form-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="footer_background_image"
+                                        name="footer_background">
+                                    <label class="custom-file-label" for="footer_background_image">Choose Footer
+                                        Background</label>
+                                </div>
+                            </div>
+
+
                         </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary bg-primary">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <!-- /.card-body -->
-
-            <div class="card-footer">
-                <button type="submit" class="btn btn-primary bg-primary">Submit</button>
-            </div>
-            </form>
         </div>
         </div>
         </div>

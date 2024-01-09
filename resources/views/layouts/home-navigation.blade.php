@@ -51,7 +51,7 @@
                     <div class="logo">
                         @if (!empty($information->logo))
                             <a href="{{ route('home') }}">
-                                <img alt="" src="{{ asset("storage/$information->logo") }}">
+                                <img style="width: 30%" alt="" src="{{ asset("storage/$information->logo") }}">
                             </a>
                         @endif
                     </div>

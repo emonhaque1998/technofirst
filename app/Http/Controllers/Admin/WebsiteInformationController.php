@@ -40,25 +40,29 @@ class WebsiteInformationController extends Controller
         $request->validate([
             "mobile" => 'required',
             "email" => "required|email",
-            "image" => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            "image" => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
+            "address" => "nullable",
+            "about_us_short" => "nullable",
+            "copyright" => "nullable",
+            "footer_background" => "nullable"
         ]);
 
         $image = $request->file("image");
+        $fotterBackground = $request->file("footer_background");
+        $fotterBackgroundPath = $fotterBackground->store("images", "public");
         $path = $image->store("images", "public");
 
-        if(!empty($data)){
-            WebsiteInformation::find($data->id)->update([
+        WebsiteInformation::updateOrInsert(
+            ["id" => $data->id],
+            [
                 'email' => $request->email,
                 'phone' => $request->mobile,
-                'logo' => $path
-            ]);
-        }else{
-            WebsiteInformation::create([
-                'email' => $request->email,
-                'phone' => $request->mobile,
-                'logo' => $path
-            ]);
-        }
+                'logo' => $path,
+                'address' => $request->address === null ? null : $request->address,
+            ]
+            );
+
+
         Cache::forget("ws_information");
         return response()->json([
             "message" => "You are success update site",

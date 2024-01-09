@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 
 
 const websiteInformationForm = document.querySelector("#brand_logo_form");
+const footerInformationForm = document.querySelector("#footer_information_form");
 
 if(websiteInformationForm){
     websiteInformationForm.addEventListener("submit", async (e)=>{
@@ -46,3 +47,12 @@ if(websiteInformationForm){
     })
 }
 
+// Footer information
+if(footerInformationForm){
+    footerInformationForm.addEventListener("submit", async (e)=>{
+        e.preventDefault();
+        const catchData = new FormData(footerInformationForm);
+        const requeustData = await axios.post("/dashboard/website-base/website-information", catchData);
+        console.log(requeustData);
+    })
+}
