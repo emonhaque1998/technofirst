@@ -1,5 +1,8 @@
 <footer class="footer-area">
-    <div class="footer-top bg-img default-overlay pt-130 pb-80" style="background-image:url(assets/img/bg/bg-4.jpg);">
+    @php
+        $footerBackground = asset("storage/" . $information->footer_background);
+    @endphp
+    <div class="footer-top bg-img default-overlay pt-130 pb-80" style="background-image:url({{$footerBackground ?? "assets/img/bg/bg-4.jpg"}});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -8,19 +11,19 @@
                             <h4>ABOUT US</h4>
                         </div>
                         <div class="footer-about">
-                            <p>Ugiat nulla pariatur. Edeserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natu</p>
+                            <p>{{$information->about_us ?? "Nothing to say this company"}}</p>
                             <div class="f-contact-info">
                                 <div class="single-f-contact-info">
                                     <i class="fa fa-home"></i>
-                                    <span>Uttara, Dhaka, Bangladesh</span>
+                                    <span>{{$information->address ?? "Not Found Address"}}</span>
                                 </div>
                                 <div class="single-f-contact-info">
                                     <i class="fa fa-envelope-o"></i>
-                                    <span><a href="#">education@email.com</a></span>
+                                    <span><a href="#">{{$information->email ?? "test@email.com"}}</a></span>
                                 </div>
                                 <div class="single-f-contact-info">
                                     <i class="fa fa-phone"></i>
-                                    <span> +98 558 547 589</span>
+                                    <span>+88{{$information->phone ?? "01xxxxxxxxx"}}</span>
                                 </div>
                             </div>
                         </div>

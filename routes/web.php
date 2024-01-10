@@ -8,6 +8,8 @@ use App\Http\Controllers\Frontend\CourseController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Admin\WebsiteInformationController;
+use App\Http\Controllers\Admin\FooterInformationController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,6 +57,7 @@ Route::middleware("auth")->group(function () {
         abort(404);
     })->name("website.base");
     Route::resource('/dashboard/website-base/website-information', WebsiteInformationController::class);
+    Route::resource('/dashboard/website-base/footer-information', FooterInformationController::class);
 });
 
 

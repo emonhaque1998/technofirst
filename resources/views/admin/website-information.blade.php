@@ -102,18 +102,22 @@
                             <div class="form-group">
                                 <label for="footerAddress">Address</label>
                                 <input type="text" class="form-control" name="address"
-                                    value='@if (!empty($basicInfo->phone)) {{ $basicInfo->phone }} @endif'
+                                    value='@if (!empty($basicInfo->address)) {{ $basicInfo->address }} @endif'
                                     id="footerAddress" placeholder="Enter Company Address">
                             </div>
                             <div class="form-group">
                                 <label for="footerAbout">About Us</label>
                                 <br>
-                                <textarea name="about_us_short" class="w-full" id="summernote">Input your About</textarea>
+                                <textarea name="about_us_short" class="w-full">
+                                    @if (!empty($basicInfo->about_us))
+                                        {{ $basicInfo->about_us }}
+                                    @endif
+                                </textarea>
                             </div>
                             <div class="form-group">
                                 <label for="footerCopyright">Copyright</label>
                                 <input type="text" class="form-control" name="copyright"
-                                    value='@if (!empty($basicInfo->phone)) {{ $basicInfo->phone }} @endif'
+                                    value='@if (!empty($basicInfo->copyright)) {{ $basicInfo->copyright }} @endif'
                                     id="footerCopyright" placeholder="Enter Copyright Texts">
                             </div>
 
@@ -124,8 +128,7 @@
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="footer_background_image"
                                         name="footer_background">
-                                    <label class="custom-file-label" for="footer_background_image">Choose Footer
-                                        Background</label>
+                                    <label class="custom-file-label" for="footer_background_image">Choose your footer Background</label>
                                 </div>
                             </div>
 

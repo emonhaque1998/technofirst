@@ -34,7 +34,7 @@
         {{ $slot }}
     </div>
 
-    @include('layouts.home-footer')
+    @include('layouts.home-footer', ['information' => $information])
 
 
 
