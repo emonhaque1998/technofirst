@@ -17,7 +17,7 @@ class WebsiteInformationController extends Controller
     public function index()
     {
         $data = Cache::remember('ws_information', Carbon::now()->addDay(), function () {
-            return WebsiteInformation::latest()->first();;
+            return WebsiteInformation::latest()->first();
         });
         return view("admin.website-information")->with("basicInfo", $data);
     }
@@ -35,35 +35,57 @@ class WebsiteInformationController extends Controller
      */
     public function store(Request $request)
     {
-        $data = WebsiteInformation::latest()->first();
+        $data = Cache::remember('ws_information', Carbon::now()->addDay(), function () {
+            return WebsiteInformation::latest()->first();;
+        });
 
         $request->validate([
-            "mobile" => 'required',
-            "email" => "required|email",
-            "image" => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
-            "address" => "nullable",
-            "about_us_short" => "nullable",
-            "copyright" => "nullable",
-            "footer_background" => "nullable"
+            "email" => "email",
         ]);
 
-        $image = $request->file("image");
-        $fotterBackground = $request->file("footer_background");
-        $fotterBackgroundPath = $fotterBackground->store("images", "public");
-        $path = $image->store("images", "public");
+        if($data->email === $request->email && $data->phone === $request->mobile && !file_exists($request->file("brandLogo"))){
+            return response()->json([
+                "message" => "Not found any changes!",
+                "success" => false
+            ], 200);
+        }
+
+        if(file_exists($request->file("brandLogo"))){
+            $request->validate([
+                "brandLogo" => 'image|mimes:jpeg,png,jpg,webp|max:2048',
+            ]);
+
+            $image = $request->file("brandLogo");
+            $imagePath = $image->store("images", "public");
+
+            WebsiteInformation::updateOrInsert(
+                ["id" => $data->id],
+                [
+                    'email' => $request->email,
+                    'phone' => $request->mobile,
+                    'logo' => $imagePath,
+                ]
+                );
+
+            Cache::forget("ws_information");
+
+            return response()->json([
+                "message" => "You are success update site",
+                "success" => true
+            ], 200);
+        }
 
         WebsiteInformation::updateOrInsert(
             ["id" => $data->id],
             [
                 'email' => $request->email,
                 'phone' => $request->mobile,
-                'logo' => $path,
-                'address' => $request->address === null ? null : $request->address,
             ]
             );
 
 
         Cache::forget("ws_information");
+
         return response()->json([
             "message" => "You are success update site",
             "success" => true

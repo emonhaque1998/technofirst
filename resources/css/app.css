@@ -2,15 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active,
+.sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
     background-color: #00a651;
     color: #fff;
 }
 
-#band_logo{
+#band_logo {
     cursor: pointer;
 }
 
-#band_logo:hover .show_title{
+#band_logo:hover .show_title {
     display: block;
+}
+
+.pb-80 {
+    padding-bottom: 0rem;
 }

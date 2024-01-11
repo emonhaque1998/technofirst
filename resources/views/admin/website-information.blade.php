@@ -1,7 +1,4 @@
 <x-app-layout>
-    @if (session('success'))
-        {{ session('success') }}
-    @endif
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -24,7 +21,7 @@
                 <div class="col-md-6">
 
                     {{-- Header Card Information --}}
-                    <div class="card card-primary">
+                    <div class="card card-success">
                         <div class="card-header">
                             <h3 class="card-title">Header Information</h3>
                         </div>
@@ -37,14 +34,14 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Phone Number</label>
                                     <input type="text" class="form-control" name="mobile"
-                                        value='@if (!empty($basicInfo->phone)) {{ $basicInfo->phone }} @endif'
+                                        value='{{$basicInfo->phone ?? ""}}'
                                         id="mobileNumber" placeholder="Enter Phone Number">
                                     <x-input-error :messages="$errors->get('mobile')" class="mt-2" />
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Email</label>
                                     <input type="email" class="form-control" name="email"
-                                        value='@if (!empty($basicInfo->email)) {{ $basicInfo->email }} @endif'
+                                        value='{{$basicInfo->email ?? ""}}'
                                         id="emailAdd" placeholder="Enter Email">
                                 </div>
                                 <div class="form-group">
@@ -64,7 +61,7 @@
                                     <div id="brand_logo_src"
                                         @if (!empty($basicInfo->logo)) style="background: url({{ asset("storage/$basicInfo->logo") }}); background-repeat: no-repeat;  object-fit: cover" class="w-40 h-40 bg-cover bg-center">
                                     @else
-                                        class="w-40 h-40 bg-[url('https://placekitten.com/1400')] bg-cover bg-center"> @endif
+                                        class="w-40 h-40 bg-[url('{{asset("storage/$basicInfo->logo ?? https://placekitten.com/1400 ")}}')] bg-cover bg-center"> @endif
                                         <div id="band_logo"
                                         class="w-full h-full flex  justify-center items-center
                                                  hover:backdrop-brightness-75">
@@ -82,7 +79,7 @@
                     <!-- /.card-body -->
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary bg-primary">Submit</button>
+                        <button type="submit" class="btn btn-success bg-success">Submit</button>
                     </div>
                     </form>
                 </div>
@@ -90,7 +87,7 @@
 
             {{-- Footer card Information Form --}}
             <div class="col-md-6">
-                <div class="card card-primary">
+                <div class="card card-success">
                     <div class="card-header">
                         <h3 class="card-title">Footer Information</h3>
                     </div>
@@ -102,22 +99,20 @@
                             <div class="form-group">
                                 <label for="footerAddress">Address</label>
                                 <input type="text" class="form-control" name="address"
-                                    value='@if (!empty($basicInfo->address)) {{ $basicInfo->address }} @endif'
+                                    value='{{$basicInfo->address ?? ""}}'
                                     id="footerAddress" placeholder="Enter Company Address">
                             </div>
                             <div class="form-group">
                                 <label for="footerAbout">About Us</label>
                                 <br>
                                 <textarea name="about_us_short" class="w-full">
-                                    @if (!empty($basicInfo->about_us))
-                                        {{ $basicInfo->about_us }}
-                                    @endif
+                                    {{ $basicInfo->about_us ?? ""}}
                                 </textarea>
                             </div>
                             <div class="form-group">
                                 <label for="footerCopyright">Copyright</label>
                                 <input type="text" class="form-control" name="copyright"
-                                    value='@if (!empty($basicInfo->copyright)) {{ $basicInfo->copyright }} @endif'
+                                    value='{{ $basicInfo->copyright }}'
                                     id="footerCopyright" placeholder="Enter Copyright Texts">
                             </div>
 
@@ -135,7 +130,7 @@
 
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary bg-primary">Submit</button>
+                            <button type="submit" class="btn btn-success bg-success">Submit</button>
                         </div>
                     </form>
                 </div>

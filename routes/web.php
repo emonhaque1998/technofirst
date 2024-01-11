@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Admin\WebsiteInformationController;
 use App\Http\Controllers\Admin\FooterInformationController;
+use App\Events\MyEvent;
 
 /*
 |--------------------------------------------------------------------------

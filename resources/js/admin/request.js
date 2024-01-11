@@ -9,16 +9,7 @@ const footerInformationForm = document.querySelector(
 if (websiteInformationForm) {
     websiteInformationForm.addEventListener("submit", async (e) => {
         e.preventDefault();
-        const fromData = new FormData();
-
-        const mobileNumber = document.querySelector("#mobileNumber");
-        const emailAddress = document.querySelector("#emailAdd");
-        const logoFile = document.querySelector("#brand_logo_input");
-
-        fromData.append("mobile", mobileNumber.value);
-
-        fromData.append("email", emailAddress.value);
-        fromData.append("image", logoFile.files[0]);
+        const fromData = new FormData(websiteInformationForm);
 
         try {
             const requeustData = await axios.post(
@@ -26,10 +17,10 @@ if (websiteInformationForm) {
                 fromData
             );
 
-            if (requeustData.data.success) {
+            if (requeustData.data) {
                 Swal.fire({
                     position: "top-end",
-                    icon: "success",
+                    icon: requeustData.data.success ? "success" : "error",
                     title: requeustData.data.message,
                     showConfirmButton: false,
                     toast: true,

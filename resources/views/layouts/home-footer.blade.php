@@ -109,7 +109,7 @@
                     <div class="copyright">
                         <p>
                             Copyright ©
-                            <a href="#">GLAXDU</a>
+                            <a href="#">{{$information->copyright ?? "Not Found Company Issue"}}</a>
                             . All Right Reserved.
                         </p>
                     </div>
