@@ -7,7 +7,7 @@ use App\Models\WebsiteInformation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Storage;
 
 class WebsiteInformationController extends Controller
 {
@@ -57,6 +57,10 @@ class WebsiteInformationController extends Controller
 
             $image = $request->file("brandLogo");
             $imagePath = $image->store("images", "public");
+
+            if($imagePath){
+                Storage::disk("public")->delete($data->logo);
+            }
 
             WebsiteInformation::updateOrInsert(
                 ["id" => $data->id],
