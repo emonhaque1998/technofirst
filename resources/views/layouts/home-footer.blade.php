@@ -1,8 +1,11 @@
 <footer class="footer-area">
     @php
-        $footerBackground = asset("storage/" . $information->footer_background);
+        $footerImage = "assets/img/bg/bg-4.jpg";
+        if(!empty($information->footer_background)){
+            $footerImage = asset("storage/" . $information->footer_background);
+        }
     @endphp
-    <div class="footer-top bg-img default-overlay pt-130 pb-80" style="background-image:url({{$footerBackground ?? "assets/img/bg/bg-4.jpg"}});">
+    <div class="footer-top bg-img default-overlay pt-130 pb-80" style="background-image:url({{$footerImage}});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">

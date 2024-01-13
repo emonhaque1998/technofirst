@@ -43,12 +43,6 @@ class WebsiteInformationController extends Controller
             "email" => "email",
         ]);
 
-        if($data->email === $request->email && $data->phone === $request->mobile && !file_exists($request->file("brandLogo"))){
-            return response()->json([
-                "message" => "Not found any changes!",
-                "success" => false
-            ], 200);
-        }
 
         if(file_exists($request->file("brandLogo"))){
             $request->validate([
@@ -58,12 +52,12 @@ class WebsiteInformationController extends Controller
             $image = $request->file("brandLogo");
             $imagePath = $image->store("images", "public");
 
-            if($imagePath){
+            if($imagePath && !empty($data->logo)){
                 Storage::disk("public")->delete($data->logo);
             }
 
             WebsiteInformation::updateOrInsert(
-                ["id" => $data->id],
+                ["id" => $data ? $data->id : null],
                 [
                     'email' => $request->email,
                     'phone' => $request->mobile,
@@ -80,7 +74,7 @@ class WebsiteInformationController extends Controller
         }
 
         WebsiteInformation::updateOrInsert(
-            ["id" => $data->id],
+            ["id" => $data ? $data->id : null],
             [
                 'email' => $request->email,
                 'phone' => $request->mobile,

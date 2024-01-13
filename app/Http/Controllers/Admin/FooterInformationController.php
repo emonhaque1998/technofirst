@@ -54,7 +54,7 @@ class FooterInformationController extends Controller
         }
 
         WebsiteInformation::updateOrInsert(
-            ["id" => $data->id],
+            ["id" => $data ? $data->id : null],
             [
                 'address' => $request->address,
                 'about_us' => $request->about_us_short,

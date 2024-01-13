@@ -59,9 +59,13 @@
                                 </div>
                                 <div class="flex justify-center items-start flex-col mb-5">
                                     <div id="brand_logo_src"
-                                        @if (!empty($basicInfo->logo)) style="background: url({{ asset("storage/$basicInfo->logo") }}); background-repeat: no-repeat;  object-fit: cover" class="w-40 h-40 bg-cover bg-center">
-                                    @else
-                                        class="w-40 h-40 bg-[url('{{asset("storage/$basicInfo->logo ?? https://placekitten.com/1400 ")}}')] bg-cover bg-center"> @endif
+                                        @php
+                                            $brandLogo = "https://placekitten.com/1400";
+                                            if(!empty($basicInfo->logo)){
+                                                $brandLogo = asset("storage/$basicInfo->logo");
+                                            }
+                                        @endphp
+                                        class="w-40 h-40 bg-cover bg-center" style="background: url({{$brandLogo}});">
                                         <div id="band_logo"
                                         class="w-full h-full flex  justify-center items-center
                                                  hover:backdrop-brightness-75">
@@ -112,7 +116,7 @@
                             <div class="form-group">
                                 <label for="footerCopyright">Copyright</label>
                                 <input type="text" class="form-control" name="copyright"
-                                    value='{{ $basicInfo->copyright }}'
+                                    value='{{ $basicInfo->copyright ?? "" }}'
                                     id="footerCopyright" placeholder="Enter Copyright Texts">
                             </div>
 
