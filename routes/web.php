@@ -9,7 +9,7 @@ use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Admin\WebsiteInformationController;
 use App\Http\Controllers\Admin\FooterInformationController;
-use App\Events\MyEvent;
+use App\Http\Controllers\Admin\BannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +59,7 @@ Route::middleware("auth")->group(function () {
     })->name("website.base");
     Route::resource('/dashboard/website-base/website-information', WebsiteInformationController::class);
     Route::resource('/dashboard/website-base/footer-information', FooterInformationController::class);
+    Route::resource('/dashboard/website-base/banner-information', BannerController::class);
 });
 
 

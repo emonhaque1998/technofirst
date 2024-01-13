@@ -191,7 +191,7 @@
                 </li>
                 <li
                     class="nav-item {{ request()->is('dashboard/website-base/*') ? 'menu-is-opening menu-open' : null }}">
-                    <a href="#" class="nav-link @if (request()->routeIs('website-information.index')) active @endif">
+                    <a href="#" class="nav-link {{request()->is('dashboard/website-base/*') ? 'active' : null}}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Website Base
@@ -204,6 +204,13 @@
                                 class="nav-link {{ request()->routeIs('website-information.index') ? 'active' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Basic Information</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('banner-information.index') }}"
+                                class="nav-link {{ request()->routeIs('banner-information.index') ? 'active' : null }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Banner</p>
                             </a>
                         </li>
                     </ul>

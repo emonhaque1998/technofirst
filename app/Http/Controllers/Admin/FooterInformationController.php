@@ -39,6 +39,13 @@ class FooterInformationController extends Controller
             "footer_background" => "nullable"
         ]);
 
+        if(empty($request->address) && empty($request->about_us_short) && empty($request->copyright) && !file_exists($request->file("footer_background"))){
+            return response()->json([
+                "message" => "You do not provide any information",
+                "success" => false
+            ], 200);
+        }
+
         $fotterBackgroundPath = null;
 
         if(file_exists($request->file("footer_background"))){

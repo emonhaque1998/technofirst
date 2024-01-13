@@ -50,10 +50,10 @@ if (footerInformationForm) {
                 "/dashboard/website-base/footer-information",
                 catchData
             );
-            if (requeustData.data.success) {
+            if (requeustData.data) {
                 Swal.fire({
                     position: "top-end",
-                    icon: "success",
+                    icon: requeustData.data.success ? "success" : "error",
                     title: requeustData.data.message,
                     showConfirmButton: false,
                     toast: true,
